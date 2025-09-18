@@ -8,6 +8,7 @@ public class Tuan4_Bai1_Vinh
     {
         this.number = number;
     }
+    
     public String check() 
     {
         if (number > 0) 
