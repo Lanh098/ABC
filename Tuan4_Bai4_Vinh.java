@@ -17,6 +17,7 @@ public class Tuan4_Bai4_Vinh
         }
         return tong;
     }
+    
     public static void main(String[] args) 
     {
         try (Scanner sc = new Scanner(System.in)) 
