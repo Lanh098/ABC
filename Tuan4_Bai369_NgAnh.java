@@ -1,10 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 public class Tuan4_Bai369_NgAnh {
-
-    // Ham tinh toan co ban
     public static void basicCalculator(Scanner sc) {
         System.out.print("Nhap so thu nhat: ");
         double a = sc.nextDouble();
@@ -37,8 +34,6 @@ public class Tuan4_Bai369_NgAnh {
         }
         if (valid) System.out.println("Ket qua: " + result);
     }
-
-    // Ham tim UCLN va BCNN
     public static void gcdLcm(Scanner sc) {
         System.out.print("Nhap so nguyen thu nhat: ");
         int a = sc.nextInt();
@@ -49,7 +44,6 @@ public class Tuan4_Bai369_NgAnh {
         System.out.println("UCLN cua " + a + " va " + b + " la: " + gcd);
         System.out.println("BCNN cua " + a + " va " + b + " la: " + lcm);
     }
-
     public static int findGCD(int a, int b) {
         while (b != 0) {
             int temp = b;
@@ -58,8 +52,6 @@ public class Tuan4_Bai369_NgAnh {
         }
         return Math.abs(a);
     }
-
-    // Ham tao va in danh sach so nguyen
     public static void integerList(Scanner sc) {
         System.out.print("Nhap so luong phan tu: ");
         int n = sc.nextInt();
@@ -74,7 +66,6 @@ public class Tuan4_Bai369_NgAnh {
         }
         System.out.println();
     }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int choice;
