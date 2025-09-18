@@ -23,6 +23,7 @@ public class Tuan4_Bai10_Vinh
             System.out.println(value + "Da them " + " tai vi tri " + index);
         }
     }
+    
     public void xoa(int index) 
     {
         if (index < 0 || index >= list.size()) 
