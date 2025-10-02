@@ -7,6 +7,7 @@ public class Sach {
     private int soLuong;
     public Sach() {
     }
+
     public Sach(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong) {
         this.maSach = maSach;
         this.tieuDe = tieuDe;
