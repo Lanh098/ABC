@@ -5,6 +5,7 @@
 package huynhngocanh_tuan6;
 import java.util.Scanner;
 import Sach.*;
+
 /**
  *
  * @author HNgAnh
@@ -14,7 +15,7 @@ public class HuynhNgocAnh_Tuan6 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Nhap so luong sach toi da muon quan ly: ");
+        System.out.print("Nhap so luong sach muon quan ly: ");
         int n = Integer.parseInt(sc.nextLine());
         QuanLySach ql = new QuanLySach(n);
 
@@ -35,11 +36,13 @@ public class HuynhNgocAnh_Tuan6 {
                     System.out.println("\n--- Them sach ---");
                     ql.nhapSachMoi(sc);
                 }
+
                 case 2 -> {
                     System.out.print("Nhap ma sach can xoa: ");
                     String maXoa = sc.nextLine();
                     ql.xoaSach(maXoa);
                 }
+
                 case 3 -> {
                     System.out.print("Nhap ma sach can tim: ");
                     String maTim = sc.nextLine();
@@ -58,17 +61,20 @@ public class HuynhNgocAnh_Tuan6 {
 
                     if (sachCu != null) {
                         System.out.println("Nhap thong tin moi cho sach:");
-                        Sach sachMoi;
-                        sachMoi = ql.nhapSachMoi(sc);
+                        Sach sachMoi = ql.nhapMotSach(sc); // không thêm, chỉ nhập
                         ql.capNhatSach(maCapNhat, sachMoi);
                     } else {
                         System.out.println("Khong tim thay sach!");
                     }
                 }
+
                 case 5 -> ql.hienThiDanhSach();
+
                 case 0 -> System.out.println("Thoat!");
+
                 default -> System.out.println("Lua chon khong hop le!");
             }
+
         } while (luaChon != 0);
     }
 }
