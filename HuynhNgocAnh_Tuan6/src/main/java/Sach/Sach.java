@@ -67,7 +67,6 @@ public class Sach {
         this.soLuong = soLuong;
     }
 
-
     public void hienThiThongTin() {
         System.out.println("Ma sach: " + maSach);
         System.out.println("Tieu de: " + tieuDe);
