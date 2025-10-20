@@ -1,6 +1,7 @@
 package Sach;
 
-public class SachGiaoTrinh extends Sach {
+// Triển khai giao diện IKiemKe 
+public class SachGiaoTrinh extends Sach implements IKiemKe {
     private String monHoc;
     private String capDo;
 
@@ -15,31 +16,23 @@ public class SachGiaoTrinh extends Sach {
         this.capDo = capDo;
     }
 
-    public String getMonHoc() {
-        return monHoc;
-    }
-
-    public void setMonHoc(String monHoc) {
-        this.monHoc = monHoc;
-    }
-
-    public String getCapDo() {
-        return capDo;
-    }
-
-    public void setCapDo(String capDo) {
-        this.capDo = capDo;
-    }
+    // Getters and Setters
+    public String getMonHoc() { return monHoc; }
+    public void setMonHoc(String monHoc) { this.monHoc = monHoc; }
+    public String getCapDo() { return capDo; }
+    public void setCapDo(String capDo) { this.capDo = capDo; }
 
     @Override
     public double tinhGiaBan() {
-        // Ví dụ: sách càng cũ thì giá giảm 5000/năm
+        // Giá bán = giaCoBan + (Số năm đã xuất bản × 5.000 VNĐ) 
+        // (Số năm đã xuất bản = 2025 - namXuatBan) 
         double gia = giaCoBan + ((2025 - this.namXuatBan) * 5000);
-        return Math.max(gia, 0); // tránh giá âm nếu năm XB > 2025
+        return Math.max(gia, 0);
     }
 
     @Override
     public String toString() {
+        // Cập nhật toString() để hiển thị cả Gia Bán 
         return "SachGiaoTrinh {" +
                 "maSach='" + maSach + '\'' +
                 ", tieuDe='" + tieuDe + '\'' +
@@ -51,5 +44,18 @@ public class SachGiaoTrinh extends Sach {
                 ", capDo='" + capDo + '\'' +
                 ", giaBan=" + tinhGiaBan() +
                 '}';
+    }
+
+    // Triển khai phương thức từ Interface IKiemKe
+    @Override
+    public boolean kiemTraTonKho(int soLuongToiThieu) {
+        // Trả về true nếu soLuong của sách ≥ soLuongToiThieu 
+        return this.soLuong >= soLuongToiThieu;
+    }
+
+    @Override
+    public void capNhatViTri(String viTriMoi) {
+        // In ra thông báo theo định dạng yêu cầu 
+        System.out.println("Đã chuyển sách [" + this.tieuDe + "] đến khu vực: [" + viTriMoi + "].");
     }
 }

@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package Tuan7_HuynhNgocAnh;
 import java.util.Scanner;
 import Sach.*;
 
-/**
- *
- * @author HNgAnh
- */
 public class HuynhNgocAnh_Tuan7 {
 
     public static void main(String[] args) {
@@ -27,29 +19,29 @@ public class HuynhNgocAnh_Tuan7 {
             System.out.println("3. Tim kiem");
             System.out.println("4. Cap nhap");
             System.out.println("5. Hien thi");
+            System.out.println("6. Kiem tra ton kho"); // Chức năng mới
+            System.out.println("7. Cap nhat vi tri");   // Chức năng mới
             System.out.println("0. Thoat chuong trinh");
             while (true) {
                 try {
                     System.out.print("Nhap lua chon: ");
                     luaChon = Integer.parseInt(sc.nextLine());
-                    break; // chỉ thoát nếu nhập đúng số
+                    break;
                 } catch (NumberFormatException e) {
                     System.out.println("Nhap sai dinh dang, vui long nhap so!");
                 }
-}
+            }
 
             switch (luaChon) {
                 case 1 -> {
                     System.out.println("\n--- Them sach ---");
                     ql.themSach(sc);
                 }
-
                 case 2 -> {
                     System.out.print("Nhap ma sach can xoa: ");
                     String maXoa = sc.nextLine();
                     ql.xoaSach(maXoa);
                 }
-
                 case 3 -> {
                     System.out.print("Nhap ma sach can tim: ");
                     String maTim = sc.nextLine();
@@ -61,19 +53,47 @@ public class HuynhNgocAnh_Tuan7 {
                         System.out.println("Khong tim thay sach " + maTim);
                     }
                 }
-                case 4 -> { // Cập nhật
+                case 4 -> {
                     System.out.print("Nhap ma sach can cap nhap: ");
                     String maCapNhat = sc.nextLine();
                     ql.capNhatSach(maCapNhat, sc);
                 }
-
                 case 5 -> ql.hienThiTatCaSach();
-
+                // Yêu cầu 4: Thực hiện kiểm tra giao diện 
+                case 6 -> {
+                    System.out.print("Nhap ma sach can kiem tra ton kho: ");
+                    String maKiemTra = sc.nextLine();
+                    Sach sachKiemTra = ql.timSach(maKiemTra);
+                    if (sachKiemTra instanceof IKiemKe) {
+                        System.out.print("Nhap so luong ton kho toi thieu: ");
+                        int soLuongToiThieu = Integer.parseInt(sc.nextLine());
+                        IKiemKe kiemKe = (IKiemKe) sachKiemTra;
+                        boolean ketQua = kiemKe.kiemTraTonKho(soLuongToiThieu); // Gọi phương thức qua interface 
+                        if (ketQua) {
+                            System.out.println("So luong sach '" + sachKiemTra.getTieuDe() + "' dap ung du so luong toi thieu.");
+                        } else {
+                            System.out.println("So luong sach '" + sachKiemTra.getTieuDe() + "' KHONG dap ung du so luong toi thieu.");
+                        }
+                    } else {
+                        System.out.println("Khong tim thay sach hoac sach khong ho tro chuc nang kiem ke.");
+                    }
+                }
+                case 7 -> {
+                    System.out.print("Nhap ma sach can cap nhat vi tri: ");
+                    String maViTri = sc.nextLine();
+                    Sach sachViTri = ql.timSach(maViTri);
+                    if (sachViTri instanceof IKiemKe) {
+                        System.out.print("Nhap vi tri moi (VD: Kho A1-Ke 5): ");
+                        String viTriMoi = sc.nextLine();
+                        IKiemKe kiemKe = (IKiemKe) sachViTri;
+                        kiemKe.capNhatViTri(viTriMoi); // Gọi phương thức qua interface 
+                    } else {
+                        System.out.println("Khong tim thay sach hoac sach khong ho tro chuc nang cap nhat vi tri.");
+                    }
+                }
                 case 0 -> System.out.println("Thoat!");
-
                 default -> System.out.println("Lua chon khong hop le!");
             }
-
         } while (luaChon != 0);
     }
 }
